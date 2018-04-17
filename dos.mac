@@ -1,0 +1,24 @@
+;DOS.MAC
+PRINTCH     	MACRO   char
+    	MOV DL, [char]
+    	MOV AH, 02
+    	INT 21H
+ENDM
+
+NEWLN      	MACRO
+ 	MOV AH,09h
+ 	MOV DX,offset linefeed
+ 	INT 21h
+
+
+ENDM
+
+PRINTSTR   	MACRO MSG
+ 	PUSH AX
+ 	PUSH DX
+ 	MOV AH,09H
+ 	MOV DX,OFFSET MSG
+ 	INT 21H
+ 	POP DX
+ 	POP AX
+ENDM
